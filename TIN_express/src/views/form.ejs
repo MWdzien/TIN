@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Order</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+<h1>Add New Order</h1>
+<form action="/orders" method="POST">
+    <label for="customer">Customer:</label>
+    <input type="text" id="customer" name="customer" required />
+
+    <label for="status">Status:</label>
+    <select id="status" name="status" required>
+        <option value="pending">Pending</option>
+        <option value="completed">Completed</option>
+        <option value="processing">Processing</option>
+    </select>
+
+    <label for="date">Date:</label>
+    <input type="datetime-local" id="date" name="date" required />
+
+    <label for="total">Total:</label>
+    <input type="number" id="total" name="total" step="0.01" required />
+
+    <button type="submit">Add Order</button>
+</form>
+</body>
+</html>
