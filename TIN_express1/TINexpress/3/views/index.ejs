@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3</title>
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
+</head>
+<body>
+<div class="container">
+    <form action="/result" class="form" method="POST">
+        <div class="input">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" placeholder="First Name" name="firstName">
+        </div>
+        <div class="input">
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" placeholder="Last Name" name="lastName">
+        </div>
+        <div class="input">
+            <label for="month">Birth Month</label>
+            <select id="month" name="month">
+                <% var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]%>
+                <%months.forEach((month, idx) => {%>
+                    <option value="<%=idx+1%>"><%=month%></option>
+                <%})%>
+            </select>
+        </div>
+        <div class="input">
+            <label for="year">Birth Year</label>
+            <select name="year" id="year">
+                <% for (let i = new Date().getFullYear(); i >= 1900; i--){%>
+                <option value="<%=i%>"><%=i%></option>
+                <%}%>
+            </select>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>
