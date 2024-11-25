@@ -104,7 +104,8 @@ label {
 input, select {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: none;
+    border-bottom: 1px solid #ccc;
     font-size: 14px;
     box-sizing: border-box;
     transition: border-color 0.3s ease;
