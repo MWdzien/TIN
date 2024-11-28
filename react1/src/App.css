@@ -150,3 +150,7 @@ p strong {
   background-color: #2c3b36;
 }
 
+.error p{
+  color: red;
+}
+

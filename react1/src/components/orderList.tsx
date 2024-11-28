@@ -6,25 +6,23 @@ import Order from "./order";
 
 
 
-function OrderList(){
+const OrderList = () => {
     const [orders, setOrders] = useState<Order[]>([]);
     const [customerName, setCustomerName] = useState<string>("");
-    const [total, setTotal] = useState<number>(0);
+    const [total, setTotal] = useState<string>("");
     const [focused, setFocused] = useState<boolean>(false);
 
     const addOrder = (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (customerName.length < 3 || Number(total) <= 0) return;
-
         const newOrder: Order = {
             customerName: customerName,
-            total: total
+            total: Number(total)
         }
 
-        setOrders((prevOrders => [...prevOrders, newOrder]));
+        setOrders(prevOrders => [...prevOrders, newOrder]);
         setCustomerName("");
-        setTotal(0);
+        setTotal("");
         setFocused(false);
     };
 
@@ -53,7 +51,7 @@ function OrderList(){
                     placeholder="Total price"
                     value={total}
                     step="0.01"
-                    onChange={(e) => setTotal(Number(e.target.value))}
+                    onChange={(e) => setTotal(e.target.value)}
                     onBlur={() => setFocused(true)}
                 />
                 <button type="submit">Add order</button>
