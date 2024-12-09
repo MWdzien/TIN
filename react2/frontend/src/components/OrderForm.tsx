@@ -1,14 +1,12 @@
 import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
-interface Props {
-    onOrderAdded: () => void;
-}
-
-const OrderForm: React.FC<Props> = ({onOrderAdded}) => {
+const OrderForm: React.FC = () => {
     const [customerName, setCustomerName] = useState("");
     const [status, setStatus] = useState("pending");
     const [date, setDate] = useState("");
     const [total, setTotal] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -26,11 +24,11 @@ const OrderForm: React.FC<Props> = ({onOrderAdded}) => {
             body: JSON.stringify(newOrder)
         });
 
-        onOrderAdded();
         setCustomerName("");
         setStatus("pending");
         setDate("");
         setTotal("");
+        navigate("/");
     };
 
 

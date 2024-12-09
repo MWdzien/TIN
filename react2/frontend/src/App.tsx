@@ -1,29 +1,27 @@
-import React, {useEffect, useState} from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import OrderList from "./components/orderList";
 import OrderForm from "./components/OrderForm";
+import OrderDetails from "./components/OrderDetails";
+import './App.css';
+
 
 function App() {
-    const [orders, setOrders] = useState([]);
-
-    const fetchOrders = async () => {
-        const response = await fetch('http://localhost:3001/orders');
-        const data = await response.json();
-        setOrders(data);
-    }
-
-    useEffect(() => {
-        fetchOrders();
-    }, []);
-
-
     return (
-    <div className="App">
-      <h1>Flower shop orders</h1>
-        <OrderForm onOrderAdded={fetchOrders} />
-        <OrderList orders={orders} onDelete={fetchOrders}/>
-    </div>
+        <Router>
+            <div>
+                <h1>Flower Shop Orders</h1>
+                <Routes>
+                    <Route
+                        path="/"
+                        element={<OrderList />}
+                    />
+                    <Route path="/add" element={<OrderForm />} />
+                    <Route path="/order/:id" element={<OrderDetails />} />
+                    <Route path="*" element={<h2>404 - Page Not Found</h2>} />
+                </Routes>
+            </div>
+        </Router>
     );
 }
 

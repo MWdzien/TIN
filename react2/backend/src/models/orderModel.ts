@@ -1,4 +1,5 @@
 import pool from "../database/database"
+import {RowDataPacket} from "mysql2";
 
 export interface Order {
     id?: number;
@@ -9,10 +10,10 @@ export interface Order {
 }
 
 
-/*export const getOrderAsync = async (id:number): Promise<Order> => {
-    const [res] = await pool.query('SELECT * FROM orders WHERE id = ?', [id]);
+export const getOrderAsync = async (id:number): Promise<Order> => {
+    const [res] = await pool.query<Order & RowDataPacket[]>('SELECT * FROM orders WHERE id = ?', [id]);
     return res[0] as Order;
-}*/
+}
 
 export const createOrderAsync = async (order: Order): Promise<void> => {
     const {customerName, status, date, total} = order;

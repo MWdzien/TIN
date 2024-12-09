@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
 import {createOrderAsync, deleteOrderAsync, getAllOrdersAsync, getOrderAsync, Order} from "../models/orderModel";
-import exp from "node:constants";
+
 
 export const getOrder = async (req: Request, res: Response): Promise<void> => {
     try {
@@ -38,6 +38,6 @@ export const getAllOrders = async (req: Request, res: Response): Promise<void> =
         const orders = await getAllOrdersAsync();
         res.status(200).json(orders);
     } catch (error) {
-        res.status(500).send("Internal server error while fetching orders")
+        res.status(500).send("Internaaaaaal server error while fetching orders")
     }
 }
